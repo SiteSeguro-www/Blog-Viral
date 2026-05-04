@@ -1,5 +1,6 @@
 import { useParams, Navigate, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getArticleBySlug } from "../data/articles";
 import { AdBanner } from "../components/AdBanner";
 import { useEffect } from "react";
@@ -81,6 +82,7 @@ export function Article() {
           prose-li:text-slate-700"
         >
           <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
             components={{
               a: ({ node, ...props }) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" className="transition-colors border-b-2 border-blue-200 hover:border-blue-500 no-underline pb-0.5" />
@@ -96,6 +98,29 @@ export function Article() {
               ),
               p: ({ node, ...props }) => (
                 <p {...props} className="mb-6" />
+              ),
+              table: ({ node, ...props }) => (
+                <div className="my-8 overflow-x-auto rounded-[24px] md:rounded-[32px] bg-slate-900 p-0 md:p-4 shadow-2xl">
+                  <table {...props} className="w-full text-left border-collapse min-w-[500px] [&_strong]:!text-white [&_strong]:italic [&_strong]:tracking-tighter [&_strong]:uppercase" />
+                </div>
+              ),
+              thead: ({ node, ...props }) => <thead {...props} className="border-b border-slate-800/80" />,
+              tbody: ({ node, ...props }) => <tbody {...props} className="divide-y divide-slate-800/80" />,
+              tr: ({ node, ...props }) => <tr {...props} className="group hover:bg-slate-800/20 transition-colors" />,
+              th: ({ node, isHeader, ...props }) => (
+                <th 
+                  {...props} 
+                  className="py-6 px-4 md:px-6 uppercase tracking-widest text-[10px] md:text-[11px] font-black first:text-slate-400 [&:nth-child(2)]:text-slate-400 last:text-blue-500 whitespace-nowrap" 
+                />
+              ),
+              td: ({ node, isHeader, ...props }) => (
+                <td 
+                  {...props} 
+                  className="py-6 px-4 md:px-6 text-xs md:text-sm transition-colors first:text-white first:italic first:tracking-tighter first:uppercase [&:nth-child(2)]:text-slate-400 [&:nth-child(2)]:font-medium last:text-blue-400 last:font-bold whitespace-nowrap" 
+                />
+              ),
+              strong: ({ node, ...props }) => (
+                <strong {...props} />
               )
             }}
           >
