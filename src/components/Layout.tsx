@@ -16,14 +16,14 @@ export function Layout({ children }: LayoutProps) {
       <header className="w-full h-20 bg-slate-900 border-b border-slate-800 px-4 md:px-8 flex items-center justify-between z-50 shrink-0 shadow-md">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center group">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 lg:gap-3">
               <img 
-                src="/logo.png" 
+                src="/favicon.png" 
                 alt="Logo Blog Viral" 
-                className="h-10 w-auto object-contain"
+                className="h-10 sm:h-12 w-auto object-contain flex-shrink-0"
               />
-              <span className="text-xl font-black tracking-tighter text-white">
-                Blog <span className="text-blue-500">Viral</span>
+              <span className="text-xl sm:text-2xl lg:text-3xl tracking-tighter text-white flex-shrink-0 whitespace-nowrap" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 900 }}>
+                Blog <span className="text-blue-500 ml-1">Viral</span>
               </span>
             </div>
           </Link>
@@ -78,9 +78,9 @@ export function Layout({ children }: LayoutProps) {
       <footer className="bg-slate-900 px-4 md:px-8 py-10 flex flex-col gap-8 text-slate-400 border-t border-slate-800 shrink-0">
         <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="Logo Blog Viral" className="h-8 w-auto object-contain" />
-              <span className="text-white font-black text-2xl">Blog <span className="text-blue-600">Viral</span></span>
+            <div className="flex items-center gap-2">
+              <img src="/favicon.png" alt="Logo Blog Viral" className="h-8 md:h-10 w-auto object-contain flex-shrink-0" />
+              <span className="text-white text-xl md:text-2xl tracking-tighter whitespace-nowrap" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 900 }}>Blog <span className="text-blue-600 ml-1">Viral</span></span>
             </div>
             <p className="text-sm max-w-xs mt-2">As melhores dicas para você crescer e lucrar no mercado de conteúdo digital.</p>
           </div>
