@@ -1,23 +1,11 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
+import fs from "fs/promises";
 import path from "path";
-import fs from "fs";
+import { fileURLToPath } from "url";
 
-// Simple persistent store using a local JSON file (in production it will reset on container restart unless a real DB is used, but sufficient here)
-const DB_FILE = path.join(process.cwd(), "config.json");
-
-let globalConfig = { showAds: true };
-if (fs.existsSync(DB_FILE)) {
-  try {
-    globalConfig = JSON.parse(fs.readFileSync(DB_FILE, "utf-8"));
-  } catch (e) {
-    console.error("Failed to parse config.json", e);
-  }
-}
-
-function saveConfig() {
-  fs.writeFileSync(DB_FILE, JSON.stringify(globalConfig));
-}
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function startServer() {
   const app = express();
@@ -25,19 +13,47 @@ async function startServer() {
 
   app.use(express.json());
 
-  // API Routes
-  app.get("/api/config", (req, res) => {
-    res.json(globalConfig);
+  // API to save registrations in a text file
+  app.post("/api/register", async (req, res) => {
+    const { name, email, whatsapp } = req.body;
+
+    if (!name || !email || !whatsapp) {
+      return res.status(400).json({ error: "Dados incompletos" });
+    }
+
+    const timestamp = new Date().toISOString();
+    const entry = `${timestamp} | Nome: ${name} | Email: ${email} | WhatsApp: ${whatsapp}\n`;
+
+    try {
+      const filePath = path.join(__dirname, "registrations.txt");
+      await fs.appendFile(filePath, entry, "utf8");
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Erro ao salvar no arquivo:", error);
+      res.status(500).json({ error: "Erro interno ao salvar dados" });
+    }
   });
 
-  app.post("/api/config/ads", (req, res) => {
+  // API for Ad Config Persistence
+  const CONFIG_PATH = path.join(__dirname, "config.json");
+
+  app.get("/api/config", async (req, res) => {
+    try {
+      const content = await fs.readFile(CONFIG_PATH, "utf8");
+      res.json(JSON.parse(content));
+    } catch (error) {
+      // Return default if file doesn't exist
+      res.json({ showAds: true });
+    }
+  });
+
+  app.post("/api/config/ads", async (req, res) => {
     const { showAds } = req.body;
-    if (typeof showAds === 'boolean') {
-      globalConfig.showAds = showAds;
-      saveConfig();
-      res.json(globalConfig);
-    } else {
-      res.status(400).json({ error: "Invalid boolean for showAds" });
+    try {
+      await fs.writeFile(CONFIG_PATH, JSON.stringify({ showAds }), "utf8");
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save config" });
     }
   });
 
@@ -49,10 +65,10 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
     });
   }
 

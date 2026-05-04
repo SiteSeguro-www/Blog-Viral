@@ -48,7 +48,7 @@ export function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Layout Grid */}
-      <main className="flex-1 flex flex-col lg:flex-row w-full max-w-7xl mx-auto p-4 md:p-6 gap-6 relative">
+      <main className="flex-1 flex flex-col lg:flex-row w-full max-w-7xl mx-auto pt-2 lg:pt-6 px-4 md:px-6 pb-4 md:pb-6 gap-6 relative">
         
         {/* Left Sidebar Ad */}
         <aside className="hidden lg:flex flex-col gap-6 w-[160px] shrink-0">
