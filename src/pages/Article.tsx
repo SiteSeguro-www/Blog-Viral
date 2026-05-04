@@ -32,9 +32,10 @@ export function Article() {
         Voltar para Home
       </Link>
 
-      {/* Mobile Top Ad inside article */}
-      <div className="block lg:hidden w-full mb-2">
-        <AdBanner provider="Exoclick" format="horizontal" />
+      {/* Top Ad */}
+      <div className="w-full mb-2">
+        <AdBanner format="468x60" className="hidden sm:flex" />
+        <AdBanner format="320x50" className="flex sm:hidden" />
       </div>
 
       <div className="bg-white border border-slate-200 shadow-xl rounded-[32px] p-6 md:p-10 relative overflow-hidden text-slate-900">
@@ -107,13 +108,13 @@ export function Article() {
               thead: ({ node, ...props }) => <thead {...props} className="border-b border-slate-800/80" />,
               tbody: ({ node, ...props }) => <tbody {...props} className="divide-y divide-slate-800/80" />,
               tr: ({ node, ...props }) => <tr {...props} className="group hover:bg-slate-800/20 transition-colors" />,
-              th: ({ node, isHeader, ...props }) => (
+              th: ({ node, ...props }) => (
                 <th 
                   {...props} 
                   className="py-6 px-4 md:px-6 uppercase tracking-widest text-[10px] md:text-[11px] font-black first:text-slate-400 [&:nth-child(2)]:text-slate-400 last:text-blue-500 whitespace-nowrap" 
                 />
               ),
-              td: ({ node, isHeader, ...props }) => (
+              td: ({ node, ...props }) => (
                 <td 
                   {...props} 
                   className="py-6 px-4 md:px-6 text-xs md:text-sm transition-colors first:text-white first:italic first:tracking-tighter first:uppercase [&:nth-child(2)]:text-slate-400 [&:nth-child(2)]:font-medium last:text-blue-400 last:font-bold whitespace-nowrap" 
@@ -147,9 +148,16 @@ export function Article() {
         </a>
       </div>
 
-      {/* Mobile Bottom Ad */}
-      <div className="block lg:hidden w-full mt-4">
-        <AdBanner provider="Adsterra" format="rectangle" className="mx-auto" />
+      {/* Bottom Ad */}
+      <div className="w-full mt-4 flex flex-col items-center gap-4">
+        <AdBanner format="728x90" className="hidden md:flex" />
+        <AdBanner format="728x90" className="hidden md:flex" />
+        
+        <AdBanner format="468x60" className="hidden sm:flex md:hidden" />
+        <AdBanner format="468x60" className="hidden sm:flex md:hidden" />
+        
+        <AdBanner format="300x250" className="flex sm:hidden" />
+        <AdBanner format="320x50" className="flex sm:hidden" />
       </div>
     </article>
   );

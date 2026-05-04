@@ -1,30 +1,46 @@
 import { cn } from "../lib/utils";
 
 interface AdBannerProps {
-  provider: "Adsterra" | "Exoclick";
-  format?: "vertical" | "horizontal" | "rectangle";
+  format: '468x60' | '300x250' | '160x600' | '160x300' | '320x50' | '728x90';
   className?: string;
+  id?: string;
 }
 
-export function AdBanner({ provider, format = "vertical", className }: AdBannerProps) {
+const AD_CONFIGS = {
+  '468x60': { width: 468, height: 60 },
+  '300x250': { width: 300, height: 250 },
+  '160x600': { width: 160, height: 600 },
+  '160x300': { width: 160, height: 300 },
+  '320x50': { width: 320, height: 50 },
+  '728x90': { width: 728, height: 90 },
+};
+
+export function AdBanner({ format, className, id }: AdBannerProps) {
+  const config = AD_CONFIGS[format];
+
   return (
     <div 
+      id={id}
       className={cn(
-        "relative overflow-hidden flex flex-col items-center justify-center rounded-2xl bg-white/5 border border-white/20 text-white/30 text-[10px] font-mono tracking-widest transition-all",
-        format === "vertical" ? "w-full min-h-[400px]" : "",
-        format === "horizontal" ? "w-full h-[90px]" : "",
-        format === "rectangle" ? "w-full aspect-video sm:w-[300px] sm:h-[250px]" : "",
+        "flex items-center justify-center overflow-hidden transition-all mx-auto bg-transparent",
         className
       )}
+      style={{ 
+        width: '100%', 
+        maxWidth: config.width, 
+        minHeight: config.height,
+        height: config.height
+      }}
     >
-      <span className={cn("relative z-10", format === "vertical" ? "rotate-90 whitespace-nowrap" : "")}>
-        {provider.toUpperCase()} BANNER
-      </span>
-      {format !== "vertical" && (
-         <span className="mt-2 opacity-50 relative z-10 block text-center">
-           {format === "horizontal" ? "728x90" : "300x250"}
-         </span>
-      )}
+      <iframe 
+        src={`/ad-${format}.html`} 
+        width={config.width}
+        height={config.height}
+        frameBorder="0"
+        scrolling="no"
+        className="max-w-full block"
+        style={{ border: 'none', overflow: 'hidden' }}
+      />
     </div>
   );
 }

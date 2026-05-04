@@ -12,9 +12,10 @@ export function Home() {
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
-      {/* Mobile Top Ad */}
-      <div className="block lg:hidden w-full">
-        <AdBanner provider="Adsterra" format="horizontal" />
+      {/* Top Ad - Responsive */}
+      <div className="w-full">
+        <AdBanner format="728x90" className="hidden md:flex mb-2" />
+        <AdBanner format="320x50" className="flex md:hidden mb-2" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
@@ -68,9 +69,16 @@ export function Home() {
         })}
       </div>
 
-      {/* Mobile Bottom Ad */}
-      <div className="block lg:hidden w-full mt-2">
-        <AdBanner provider="Exoclick" format="rectangle" className="mx-auto" />
+      {/* Bottom Ad */}
+      <div className="w-full mt-4 flex flex-col items-center gap-4">
+        <AdBanner format="728x90" className="hidden md:flex" />
+        <AdBanner format="728x90" className="hidden md:flex" />
+        
+        <AdBanner format="468x60" className="hidden sm:flex md:hidden" />
+        <AdBanner format="468x60" className="hidden sm:flex md:hidden" />
+        
+        <AdBanner format="300x250" className="flex sm:hidden" />
+        <AdBanner format="320x50" className="flex sm:hidden" />
       </div>
     </div>
   );
