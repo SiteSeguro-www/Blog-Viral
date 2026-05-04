@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { getArticles } from "../data/articles";
 import { AdBanner } from "../components/AdBanner";
+import { useEffect } from "react";
 
 export function Home() {
   const articles = getArticles();
+
+  useEffect(() => {
+    document.title = "Blog Viral - Dicas e Estratégias para Monetização Digital";
+  }, []);
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">

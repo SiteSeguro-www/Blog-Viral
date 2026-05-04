@@ -44,10 +44,10 @@ export function Layout({ children }: LayoutProps) {
             Home
           </Link>
           <a href="https://packzinhu.online" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Plataformas</a>
-          <a href="#" className="hover:text-blue-500 transition-colors">Sobre</a>
-          <a href="#" className="hover:text-blue-500 transition-colors">Contato</a>
+          <Link to="/" className="hover:text-blue-500 transition-colors">Sobre</Link>
+          <Link to="/" className="hover:text-blue-500 transition-colors">Contato</Link>
         </nav>
-        <a href="#" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg transition-all text-center">
+        <a href="https://blogviral.site" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg transition-all text-center">
           Cadastrar-se <span className="hidden sm:inline">no Blog Viral</span>
         </a>
       </header>
@@ -95,12 +95,12 @@ export function Layout({ children }: LayoutProps) {
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-semibold">
             <Link to="/" className="hover:text-blue-500 transition-colors">Home</Link>
             <a href="https://packzinhu.online" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">PackZinhu</a>
-            <a href="#" className="hover:text-blue-500 transition-colors">Privacidade</a>
-            <a href="#" className="hover:text-blue-500 transition-colors">Termos</a>
+            <Link to="/" className="hover:text-blue-500 transition-colors">Privacidade</Link>
+            <Link to="/" className="hover:text-blue-500 transition-colors">Termos</Link>
           </div>
         </div>
-        <div className="max-w-7xl w-full mx-auto pt-8 border-t border-slate-800 flex justify-between items-center text-[11px] uppercase tracking-widest">
-          <div>© {new Date().getFullYear()} Blog Viral - Todos os direitos reservados</div>
+        <div className="max-w-7xl w-full mx-auto pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-[11px] uppercase tracking-widest gap-4">
+          <div>© {new Date().getFullYear()} <a href="https://blogviral.site" className="hover:text-blue-500">Blog Viral</a> - Todos os direitos reservados</div>
           <div className="flex gap-4">
             <a href="https://packzinhu.online" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-black hover:text-blue-500">PACKZINHU ONLINE</a>
           </div>
