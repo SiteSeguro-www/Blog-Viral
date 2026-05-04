@@ -31,14 +31,14 @@ export function Cadastro() {
       {/* Minimal Header */}
       <header className="w-full h-20 bg-[#FF7A00] border-b border-black/10 px-4 md:px-8 flex items-center justify-between z-50 shrink-0">
         <Link to="/" className="flex items-center group">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-2xl border border-white/20 shadow-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-[1.02]">
             <img 
               src="/favicon.png" 
               alt="Logo Blog Viral" 
-              className="h-10 sm:h-12 w-auto object-contain flex-shrink-0"
+              className="h-8 w-auto object-contain flex-shrink-0 drop-shadow-sm"
             />
-            <span className="text-xl sm:text-2xl tracking-tighter text-slate-900 flex-shrink-0 whitespace-nowrap" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 900 }}>
-              Blog <span className="text-white ml-1">Viral</span>
+            <span className="text-xl tracking-tight text-white flex-shrink-0 whitespace-nowrap font-bold">
+              blog<span className="text-slate-900 font-black">viral</span>
             </span>
           </div>
         </Link>

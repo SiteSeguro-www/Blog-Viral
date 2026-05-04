@@ -19,14 +19,14 @@ export function Layout({ children }: LayoutProps) {
       <header className="w-full h-20 bg-slate-900 border-b border-slate-800 px-4 md:px-8 flex items-center justify-between z-50 shrink-0 shadow-md">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center group">
-            <div className="flex items-center gap-2 lg:gap-3">
+            <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-2xl border border-white/20 shadow-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-[1.02]">
               <img 
                 src="/favicon.png" 
                 alt="Logo Blog Viral" 
-                className="h-10 sm:h-12 w-auto object-contain flex-shrink-0"
+                className="h-8 w-auto object-contain flex-shrink-0 drop-shadow-sm"
               />
-              <span className="text-xl sm:text-2xl lg:text-3xl tracking-tighter text-white flex-shrink-0 whitespace-nowrap" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 900 }}>
-                Blog <span className="text-blue-500 ml-1">Viral</span>
+              <span className="text-xl tracking-tight text-white flex-shrink-0 whitespace-nowrap font-bold">
+                blog<span className="text-black font-black">viral</span>
               </span>
             </div>
           </Link>
@@ -35,9 +35,9 @@ export function Layout({ children }: LayoutProps) {
           <Link to="/" className={`hover:text-blue-500 transition-colors ${isHome ? 'text-blue-500' : ''}`}>
             Home
           </Link>
-          <a href="https://packzinhu.online" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Plataformas</a>
-          <Link to="/" className="hover:text-blue-500 transition-colors">Sobre</Link>
-          <Link to="/" className="hover:text-blue-500 transition-colors">Contato</Link>
+          <Link to="/" className="hover:text-blue-500 transition-colors">Artigos</Link>
+          <Link to="/sobre" className="hover:text-blue-500 transition-colors">Sobre</Link>
+          <Link to="/contato" className="hover:text-blue-500 transition-colors">Contato</Link>
         </nav>
         <Link to="/cadastro" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg transition-all text-center">
           Cadastrar-se <span className="hidden sm:inline">no Blog Viral</span>

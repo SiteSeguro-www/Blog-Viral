@@ -10,6 +10,8 @@ import { Article } from "./pages/Article";
 import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
 import { Cadastro } from "./pages/Cadastro";
+import { Sobre } from "./pages/Sobre";
+import { Contato } from "./pages/Contato";
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/contato" element={<Contato />} />
               <Route path="/privacidade" element={<Privacy />} />
               <Route path="/termos" element={<Terms />} />
               <Route path="/:slug" element={<Article />} />
