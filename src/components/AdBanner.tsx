@@ -1,18 +1,19 @@
 import { cn } from "../lib/utils";
 
 interface AdBannerProps {
-  format: '468x60' | '300x250' | '160x600' | '160x300' | '320x50' | '728x90';
+  format: '468x60' | '300x250' | '160x600' | '160x300' | '320x50' | '728x90' | 'top-pc-vast';
   className?: string;
   id?: string;
 }
 
 const AD_CONFIGS = {
-  '468x60': { width: 468, height: 60 },
-  '300x250': { width: 300, height: 250 },
-  '160x600': { width: 160, height: 600 },
-  '160x300': { width: 160, height: 300 },
-  '320x50': { width: 320, height: 50 },
-  '728x90': { width: 728, height: 90 },
+  '468x60': { width: 468, height: 60, file: '468x60' },
+  '300x250': { width: 300, height: 250, file: '300x250' },
+  '160x600': { width: 160, height: 600, file: '160x600' },
+  '160x300': { width: 160, height: 300, file: '160x300' },
+  '320x50': { width: 320, height: 50, file: '320x50' },
+  '728x90': { width: 728, height: 90, file: '728x90' },
+  'top-pc-vast': { width: 728, height: 90, file: 'top-pc' },
 };
 
 export function AdBanner({ format, className, id }: AdBannerProps) {
@@ -33,7 +34,7 @@ export function AdBanner({ format, className, id }: AdBannerProps) {
       }}
     >
       <iframe 
-        src={`/ad-${format}.html`} 
+        src={`/ad-${config.file}.html`} 
         width={config.width}
         height={config.height}
         frameBorder="0"

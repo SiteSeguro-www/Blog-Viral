@@ -4,9 +4,10 @@ export function Terms() {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
       {/* Top Ad - Responsive */}
-      <div className="w-full">
+      <div className="w-full flex justify-center">
         <AdBanner format="728x90" className="hidden md:flex mb-2" />
-        <AdBanner format="320x50" className="flex md:hidden mb-2" />
+        <AdBanner format="468x60" className="hidden sm:flex md:hidden mb-2" />
+        <AdBanner format="320x50" className="flex sm:hidden mb-2" />
       </div>
 
       <div className="bg-white border border-slate-200 shadow-xl rounded-[32px] p-6 md:p-10 relative overflow-hidden text-slate-900">

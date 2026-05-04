@@ -13,7 +13,7 @@ export function Layout({ children }: LayoutProps) {
   const isHome = location.pathname === "/";
 
   return (
-    <div className="min-h-screen bg-[#FF7A00] font-sans flex flex-col overflow-hidden text-slate-900">
+    <div className="min-h-screen bg-[#FF7A00] font-sans flex flex-col text-slate-900 overflow-x-hidden">
       <SitePrompts />
       {/* Header Navigation */}
       <header className="w-full h-20 bg-slate-900 border-b border-slate-800 px-4 md:px-8 flex items-center justify-between z-50 shrink-0 shadow-md">
@@ -39,13 +39,13 @@ export function Layout({ children }: LayoutProps) {
           <Link to="/" className="hover:text-blue-500 transition-colors">Sobre</Link>
           <Link to="/" className="hover:text-blue-500 transition-colors">Contato</Link>
         </nav>
-        <a href="https://blogviral.site" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg transition-all text-center">
+        <Link to="/cadastro" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg transition-all text-center">
           Cadastrar-se <span className="hidden sm:inline">no Blog Viral</span>
-        </a>
+        </Link>
       </header>
 
       {/* Main Layout Grid */}
-      <main className="flex-1 flex flex-col lg:flex-row w-full max-w-7xl mx-auto p-4 md:p-6 gap-6 relative overflow-y-auto">
+      <main className="flex-1 flex flex-col lg:flex-row w-full max-w-7xl mx-auto p-4 md:p-6 gap-6 relative">
         
         {/* Left Sidebar Ad */}
         <aside className="hidden lg:flex flex-col gap-6 w-[160px] shrink-0">

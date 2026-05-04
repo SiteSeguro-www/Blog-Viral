@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin:0; padding:0; overflow:hidden; background:transparent; }
+  #video-container { width: 728px; height: 90px; }
+  video { width: 100%; height: 100%; object-fit: cover; }
+  #adsterra-frame { display: none; border: none; width: 728px; height: 90px; }
+</style>
+<link rel="stylesheet" href="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.css" type="text/css" />
+<script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+</head>
+<body>
+
+<div id="video-container">
+    <video id="video-id">
+       <source src="https://cdn.plyr.io/static/blank.mp4" type="video/mp4"/>
+    </video>
+</div>
+
+<iframe id="adsterra-frame" src="ad-728x90.html"></iframe>
+
+<script>
+  function showAdsterra() {
+    document.getElementById('video-container').style.display = 'none';
+    document.getElementById('adsterra-frame').style.display = 'block';
+  }
+
+  fetch('https://s.magsrv.com/v1/vast.php?idzone=5916920')
+    .then(response => response.text())
+    .then(xml => {
+      // Check if there is an ad present in the VAST XML
+      if (xml.indexOf('<Ad') !== -1 || xml.indexOf('<Wrapper') !== -1 || xml.indexOf('<InLine') !== -1) {
+        var player = fluidPlayer('video-id', {
+            layoutControls: {
+                fillToContainer: true,
+                autoPlay: true,
+                mute: true,
+                playButtonShowing: false,
+                keyboardControl: false,
+                logo: { imageUrl: null },
+                allowTheatre: false,
+                controlBar: { autoHide: true, autoHideTimeout: 2 }
+            },
+            vastOptions: {
+                adList: [
+                    {
+                        roll: 'preRoll',
+                        vastTag: 'https://s.magsrv.com/v1/vast.php?idzone=5916920'
+                    }
+                ]
+            }
+        });
+        
+        // Listen to vast events to fallback if ad fails to play
+        player.on('adError', function() {
+           // ad failed to play
+           showAdsterra();
+           player.destroy();
+        });
+      } else {
+        showAdsterra();
+      }
+    })
+    .catch(e => {
+        showAdsterra();
+    });
+</script>
+</body>
+</html>

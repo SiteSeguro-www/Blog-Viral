@@ -33,8 +33,9 @@ export function Article() {
       </Link>
 
       {/* Top Ad */}
-      <div className="w-full mb-2">
-        <AdBanner format="468x60" className="hidden sm:flex" />
+      <div className="w-full mb-2 flex justify-center">
+        <AdBanner format="728x90" className="hidden md:flex" />
+        <AdBanner format="468x60" className="hidden sm:flex md:hidden" />
         <AdBanner format="320x50" className="flex sm:hidden" />
       </div>
 
