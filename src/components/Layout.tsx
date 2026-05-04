@@ -36,6 +36,9 @@ export function Layout({ children }: LayoutProps) {
             Home
           </Link>
           <Link to="/" className="hover:text-blue-500 transition-colors">Artigos</Link>
+          <Link to="/sorteios" className="text-yellow-500 hover:text-yellow-400 transition-colors flex items-center gap-1.5">
+            Sorteios
+          </Link>
           <Link to="/sobre" className="hover:text-blue-500 transition-colors">Sobre</Link>
           <Link to="/contato" className="hover:text-blue-500 transition-colors">Contato</Link>
         </nav>
@@ -84,7 +87,7 @@ export function Layout({ children }: LayoutProps) {
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-semibold">
             <Link to="/" className="hover:text-blue-500 transition-colors">Home</Link>
-            <a href="https://packzinhu.online" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">PackZinhu</a>
+            <Link to="/sorteios" className="text-yellow-500 hover:text-yellow-400 transition-colors">Sorteios</Link>
             <Link to="/privacidade" className="hover:text-blue-500 transition-colors">Privacidade</Link>
             <Link to="/termos" className="hover:text-blue-500 transition-colors">Termos</Link>
           </div>
@@ -92,7 +95,6 @@ export function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl w-full mx-auto pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-[11px] uppercase tracking-widest gap-4">
           <div>© {new Date().getFullYear()} <a href="https://blogviral.site" className="hover:text-blue-500">Blog Viral</a> - Todos os direitos reservados</div>
           <div className="flex gap-4">
-            <a href="https://packzinhu.online" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-black hover:text-blue-500">PACKZINHU ONLINE</a>
           </div>
         </div>
       </footer>

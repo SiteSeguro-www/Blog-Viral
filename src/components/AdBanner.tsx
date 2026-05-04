@@ -1,4 +1,5 @@
 import { cn } from "../lib/utils";
+import { useAdContext } from "../contexts/AdContext";
 
 interface AdBannerProps {
   format: '468x60' | '300x250' | '160x600' | '160x300' | '320x50' | '728x90' | 'top-pc-vast';
@@ -18,6 +19,9 @@ const AD_CONFIGS = {
 
 export function AdBanner({ format, className, id }: AdBannerProps) {
   const config = AD_CONFIGS[format];
+  const { showAds } = useAdContext();
+
+  if (!showAds) return null;
 
   return (
     <div 

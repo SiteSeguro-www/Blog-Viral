@@ -12,18 +12,24 @@ import { Terms } from "./pages/Terms";
 import { Cadastro } from "./pages/Cadastro";
 import { Sobre } from "./pages/Sobre";
 import { Contato } from "./pages/Contato";
+import { AdminViral } from "./pages/AdminViral";
+import { Sorteios } from "./pages/Sorteios";
+import { AdProvider } from "./contexts/AdContext";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Pages outside of Layout */}
-        <Route path="/cadastro" element={<Cadastro />} />
+    <AdProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Pages outside of Layout */}
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/sorteios" element={<Sorteios />} />
+          <Route path="/admin-viral" element={<AdminViral />} />
 
-        {/* Pages inside the Layout */}
-        <Route path="/*" element={
-          <Layout>
-            <Routes>
+          {/* Pages inside the Layout */}
+          <Route path="/*" element={
+            <Layout>
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contato" element={<Contato />} />
@@ -36,5 +42,6 @@ export default function App() {
         } />
       </Routes>
     </BrowserRouter>
+    </AdProvider>
   );
 }
