@@ -16,26 +16,15 @@ export function Layout({ children }: LayoutProps) {
       <header className="w-full h-20 bg-slate-900 border-b border-slate-800 px-4 md:px-8 flex items-center justify-between z-50 shrink-0 shadow-md">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center group">
-            <div className="flex items-center">
-              {/* Replace with the uploaded image logo.png */}
+            <div className="flex items-center gap-3">
               <img 
                 src="/logo.png" 
-                alt="Blog Viral" 
-                className="h-[135px] w-auto object-contain -ml-[26px] -mr-[17px] mb-0"
-                onError={(e) => {
-                  // Fallback if image isn't uploaded yet
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
+                alt="Logo Blog Viral" 
+                className="h-10 w-auto object-contain"
               />
-              <div className="hidden flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                  <div className="w-4 h-4 bg-white rounded-sm rotate-45"></div>
-                </div>
-                <span className="text-xl font-black tracking-tighter text-white ml-1">
-                  Blog <span className="text-blue-500">Viral</span>
-                </span>
-              </div>
+              <span className="text-xl font-black tracking-tighter text-white">
+                Blog <span className="text-blue-500">Viral</span>
+              </span>
             </div>
           </Link>
         </div>
@@ -89,8 +78,11 @@ export function Layout({ children }: LayoutProps) {
       <footer className="bg-slate-900 px-4 md:px-8 py-10 flex flex-col gap-8 text-slate-400 border-t border-slate-800 shrink-0">
         <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="flex flex-col gap-2">
-            <span className="text-white font-black text-2xl">Blog <span className="text-blue-600">Viral</span></span>
-            <p className="text-sm max-w-xs">As melhores dicas para você crescer e lucrar no mercado de conteúdo digital.</p>
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" alt="Logo Blog Viral" className="h-8 w-auto object-contain" />
+              <span className="text-white font-black text-2xl">Blog <span className="text-blue-600">Viral</span></span>
+            </div>
+            <p className="text-sm max-w-xs mt-2">As melhores dicas para você crescer e lucrar no mercado de conteúdo digital.</p>
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-semibold">
             <Link to="/" className="hover:text-blue-500 transition-colors">Home</Link>
